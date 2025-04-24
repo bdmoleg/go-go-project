@@ -6,7 +6,6 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
-	"sync"
 	"time"
 
 	"github.com/bdmoleg/go-go-project/app"
@@ -46,11 +45,11 @@ func main() {
 
 	asanaExporter := app.NewAsanaExtractor(httpCLient, logger)
 
-	numOfGoroutines := 250
-	wg := &sync.WaitGroup{}
-	wg.Add(numOfGoroutines)
-	asanaExporter.ThreadsTestRateLimiting(wg, numOfGoroutines)
-	wg.Wait()
+	// numOfGoroutines := 250
+	// wg := &sync.WaitGroup{}
+	// wg.Add(numOfGoroutines)
+	// asanaExporter.ThreadsTestRateLimiting(wg, numOfGoroutines)
+	// wg.Wait()
 
 	asanaExporter.Extract(ctx, time.Duration(extractInterval)*time.Second)
 
