@@ -1,6 +1,7 @@
 package configs
 
 import (
+	"fmt"
 	"log/slog"
 	"os"
 	"strconv"
@@ -19,6 +20,7 @@ var (
 func init() {
 	err := godotenv.Load("./.env")
 	if err != nil {
+		fmt.Println(err)
 		os.Exit(1)
 	}
 }

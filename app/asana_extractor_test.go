@@ -2,7 +2,6 @@ package app
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
@@ -17,7 +16,6 @@ import (
 var discardLogger = slog.New(slog.NewJSONHandler(io.Discard, nil))
 
 func TestGetAsanaProjects(t *testing.T) {
-	fmt.Println("here is fmt.Println(`fmt msg`)")
 	configs.AsanaToken = "123456"
 	t.Cleanup(func() {
 		configs.AsanaToken = ""
